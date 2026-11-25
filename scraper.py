@@ -9,7 +9,10 @@ with urllib.request.urlopen(url) as response:
     tree = ET.parse(response)
 
 items = tree.getroot().findall("./channel/item")[:3]
-lines = [f"{i}. {item.find('title').text}" for i, item in enumerate(items, 1)]
+lines = []
+for i, item in enumerate(items, 1):
+    lines.append(f"{i}. {item.find('title').text}")
+    lines.append(f"   {item.find('link').text}")
 body = "Top 3 news stories:\n\n" + "\n".join(lines)
 print(body)
 
