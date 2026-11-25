@@ -12,3 +12,5 @@ jobs:
         with:
           python-version: "3.12"
       - run: python scraper.py
+        env:
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
